@@ -24,17 +24,17 @@ def similar_strings(a,b)
             difference[letter] = 0 
  
         end 
-            difference[letter] += 1     
+        difference[letter] += 1     
     end 
     b.chars.each do |letter|
         if !difference[letter]
             difference[letter] = 0 
            
         end 
-  difference[letter] -= 1 
+        difference[letter] -= 1 
     end 
     # p difference.values
-  sum = 0
-  difference.values.each {|el| sum += el.abs}
-  sum
+  result = 0
+  difference.values.each {|el| result += el.abs}
+  result
 end 
