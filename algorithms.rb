@@ -38,3 +38,26 @@ def similar_strings(a,b)
   difference.values.each {|el| result += el.abs}
   result
 end 
+
+
+# returns one triplet. O(n^2)
+def three_sum(nums)
+  nums.sort!
+  i = 0 
+  while i < nums.length - 1
+
+    j = i + 1 
+    k = nums.length - 1 
+    while i < k 
+      if nums[i] + nums[j] + nums[k] == 0
+        return [nums[i], nums[j], nums[k]]
+      elsif nums[i] + nums[j] + nums[k] < 0 
+        j += 1 
+      elsif nums[i] + nums[j] + nums[k] > 0 
+        k -= 1
+      end 
+    end 
+    
+  end 
+  return false 
+end
