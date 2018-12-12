@@ -219,3 +219,29 @@ class StackQueue
 
 
 end 
+
+# doubly linked list 
+class DoubleLink
+    def initialize(value, parent = nil)
+        @parent = parent 
+        @value = value 
+        @child = nil 
+    end 
+
+    def push(value)
+        child = DoubleLink.new(value, self)
+        @child = child 
+    end 
+ 
+end 
+
+# with doubly linked list
+# class Queue 
+#     def initialize
+#         @store = store 
+#     end 
+
+#     def push(value)
+#         @store << DoubleLink.new(value, )
+    
+# end 
