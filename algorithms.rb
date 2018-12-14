@@ -15,6 +15,7 @@ def paren_balanced?(str)
     end 
     true 
 end 
+
 # other balanced parens
 def is_valid(s)
     return false if s.length % 2 != 0

@@ -245,3 +245,48 @@ end
 #         @store << DoubleLink.new(value, )
     
 # end 
+
+class Node 
+    attr_reader :value 
+    attr_accessor :children
+    def initialize(value)
+        @value = value 
+        @children = []
+    end 
+end 
+
+class Graph 
+    attr_accessor :adjacency_list
+
+    def initialize
+        @adjacency_list = {}
+    end 
+
+    def add_node(node)
+    end 
+
+    def dfs(node)
+        stack = []
+        visited = []
+        stack.push(node)
+        while stack.length > 0 
+            popped = stack.pop 
+            if !visited.map {|n| n.value}.include?(popped.value)
+                visited << popped 
+                popped.children.each do |child|
+                    if (visited.map {|node| node.value}).include?(child.value)
+                        return true 
+                    else 
+                        stack << child 
+                    end 
+                end 
+            end 
+        end 
+        return false 
+    end 
+
+    def show 
+        adjacency_list
+    end 
+end 
+
