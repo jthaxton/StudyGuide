@@ -1,5 +1,6 @@
 # Basic singly linked list
-class Node
+require 'pry'
+class LNode
     attr_accessor :next, :value
     def initialize(value, nex = nil)
         @value = value 
@@ -8,7 +9,7 @@ class Node
 
     def append(value)
         if @next.nil?
-            node = Node.new(value)
+            node = LNode.new(value)
             @next = node 
         else 
             raise "Next already assigned."
