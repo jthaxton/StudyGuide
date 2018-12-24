@@ -126,3 +126,123 @@ def num_unique_emails(emails)
     end 
     result.uniq.length
 end 
+
+def naive_distinct_pairs(arr, k)
+  count = 0 
+  result = [] 
+  while count < arr.length 
+    counter = count + 1 
+      while counter < arr.length  
+        if arr[count] + arr[counter] == k
+          result << [arr[count] , arr[counter]]
+        end 
+        counter += 1 
+      end 
+      count += 1 
+  end 
+  result 
+end 
+
+def distinct_pairs(arr, k)
+    hash = {}
+    added_to_result = {}
+    result = []
+    arr.each do |element|
+        hash[element] = element 
+    end 
+    arr.each do |element|
+        if hash[k - element] && !added_to_result[[element, k - element]]
+            added_to_result[[element, k - element]] = true 
+            added_to_result[[k - element, element]] = true
+            result << [element, k - element]
+        end 
+    end 
+    result
+end 
+
+def k_subsequence(arr, k)
+    count = 0 
+    result = []
+    while count < arr.length 
+        counter = count 
+        while counter < arr.length 
+            result << arr[count..counter] unless (arr[count..counter].inject(:+)) % k != 0
+            counter += 1 
+        end 
+        count += 1 
+    end 
+    result
+end 
+
+# slightly faster
+def faster_k_subsequence(arr, k)
+    count = 0 
+    result = []
+    while count < arr.length 
+        counter = count 
+        while counter < arr.length 
+            result << arr[count..counter]
+            counter += 1 
+        end 
+        count += 1 
+    end 
+    result.select {|element| element.inject(:+) % k == 0}
+end
+
+def fastest_k_subcount(arr, k)
+    mod_arr = []
+    count = 0 
+    while count < k + 1
+        mod_arr << 0
+        count += 1 
+    end 
+    cumSum = 0 
+    counter = 0 
+    while counter < arr.length 
+        cumSum += arr[counter]
+        mod_arr[((cumSum % k)+k)% k]= mod_arr[((cumSum % k)+k)% k] + 1
+        counter += 1 
+    end 
+    result = 0 
+    i = 0 
+    while i < k 
+        if mod_arr[i] > 1 
+            result += (mod_arr[i]*(mod_arr[i]-1))/2
+        end 
+        i += 1 
+    end 
+    result += mod_arr[0]
+    result 
+end 
+
+
+fastest_k_subsequence([5,10,11,9,5], 5)
+
+# def stock_analysis(sources)
+#     acc = {}
+#     counter = 0
+#     while counter < sources.length
+#         acc.merge!(sources[counter][0])        
+#         counter += 1 
+#     end 
+#     acc.values
+# end 
+s1 = [
+    ["'P1':'a', 'P3':'b', 'P5':'x'"],
+    ['P1':'b', 'P2':'q', 'P5':'x']
+    ]
+
+def hashify(arg)
+    hash = {}
+arg.each do |el|
+    p el
+end 
+end
+hashify(["'P1':'a', 'P3':'b', 'P5':'x'"])
+
+arr = ['P1':'a', 'P3':'b', 'P5':'x']
+
+# arr.each do |el|
+#     el
+# end
+# stock_analysis(s1)
