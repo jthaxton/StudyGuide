@@ -216,7 +216,7 @@ def fastest_k_subcount(arr, k)
 end 
 
 
-fastest_k_subsequence([5,10,11,9,5], 5)
+# fastest_k_subsequence([5,10,11,9,5], 5)
 
 # def stock_analysis(sources)
 #     acc = {}
@@ -246,3 +246,11 @@ arr = ['P1':'a', 'P3':'b', 'P5':'x']
 #     el
 # end
 # stock_analysis(s1)
+
+def staircase(n)
+    arr = Array.new(n){'#'}
+    counter = 0
+    while counter < n 
+        string = ''
+        
+end
