@@ -84,7 +84,7 @@ class Queue
         @store.shift
         
     end 
-    # peek at first element
+
     def peek 
         @store[0]
     end 
