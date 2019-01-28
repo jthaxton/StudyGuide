@@ -16,6 +16,32 @@ def paren_balanced?(str)
     true 
 end 
 
+# other balanced parens
+def is_valid(s)
+    return false if s.length % 2 != 0
+    # return true if s.length == 0
+    hash = {'('=>')','{'=>'}','['=>']'}
+    spl = s.split('')
+    full = false
+    spl.each_with_object([]) do |el, stack|
+        if hash[el]
+            stack << el
+        elsif hash.values.include?(el)
+            return false unless hash[stack.pop] == el
+        else 
+            return false
+        end 
+        full = true if stack.length > 0
+        full = false if stack.length == 0
+    end 
+    if full == true 
+        return false 
+    else 
+        return true 
+    end 
+    
+end
+
 # operations required for strings to match 
 def similar_strings(a,b)
     difference = {}
