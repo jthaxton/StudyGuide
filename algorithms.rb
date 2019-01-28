@@ -144,3 +144,16 @@ def balanced?(str)
 # ruby get request 
 # require 'net/http'
 # x = Net::HTTP.get('www.google.com', '/')
+
+# dp
+def fibs(n, cache={})
+    return 0 if n == 0 
+    return 1 if n == 1 
+    unless cache[n - 1]
+        cache[n - 1] = fibs(n - 1, cache)
+    end 
+    unless cache[n - 2]
+        cache[n - 2] = fibs(n - 2, cache)
+    end 
+    cache[n - 1] + cache[n - 2]
+end 
