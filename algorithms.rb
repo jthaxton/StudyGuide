@@ -145,7 +145,7 @@ def balanced?(str)
 # require 'net/http'
 # x = Net::HTTP.get('www.google.com', '/')
 
-# dp
+# dynamic programming practice
 def fibs(n, cache={})
     return 0 if n == 0 
     return 1 if n == 1 
@@ -157,3 +157,36 @@ def fibs(n, cache={})
     end 
     cache[n - 1] + cache[n - 2]
 end 
+
+def triple_step(n, cache = {})
+    return 0 if n < 1
+    return 1 if n == 1 
+    unless cache[n -1]
+        cache[n - 1] = triple_step(n - 1, cache)
+    end 
+    unless cache[n - 2]
+        cache[n - 2] = triple_step(n - 2, cache)
+    end 
+    unless cache[n - 3]
+        cache[n - 3] = triple_step(n - 3, cache)
+    end 
+    return cache[n - 1] + cache[n - 2] + cache[n - 3]
+end 
+
+
+def robot_grid(row, col, cache={})
+    return 1 if row == 1 || col == 1 
+    unless cache[[row - 1, col]]
+        cache[[row - 1, col]] = robot_grid(row - 1, col, cache)
+    end 
+    unless cache[[row, col - 1]]
+        cache[[row, col - 1]] = robot_grid(row - 1, col, cache)
+    end 
+    cache[[row, col - 1]] + cache[[row - 1, col]]
+end 
+
+def robot_paths(row,col)
+    paths = []
+    paths << [1,1] if row == 1 && col == 1
+end 
+
